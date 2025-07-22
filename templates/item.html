@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Météo Python</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous"></head>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+<main>
+  <form>
+  <div class="mb-3">
+    <label for="codePostal" class="form-label">Code Postal</label>
+    <input type="number"
+           class="form-control"
+           id="codePostal"
+           name="codePostal"
+           min="1"
+           step="1"
+           minlength="5"
+           maxlength="5"
+    >
+    <div class="form-text">Entrez les 5 chiffres de votre code postal.</div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</main>
+</body>
+</html>
