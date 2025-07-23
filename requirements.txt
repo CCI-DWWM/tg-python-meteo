@@ -2,4 +2,5 @@ fastapi[standard]
 jinja2
 requests
 mysql
+mysql-connector
 dotenv

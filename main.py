@@ -4,15 +4,37 @@ from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-app = FastAPI()
+from model import get_city
 
+app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-@app.get("/", description="Point d'API racine")
-def read_root():
-    """Cette fonction retourne juste un JSON"""
-    return {"Hello": "World"}
+@app.get("/", description="landing page")
+def read_root(request: Request, postcode: str = None):
+  if postcode:
+    city = get_city(postcode)
+    return templates.TemplateResponse(
+      request=request,
+      name="cp.html",
+      context={"postcode": postcode, "city": city}
+    )
+  else:
+    return templates.TemplateResponse(
+      request=request,
+      name="cp.html",
+    )
+
+
+#--------------------
+#-Exercice précédent-
+#--------------------
+
+# @app.get("/", description="Point d'API racine")
+# def read_root():
+#    #Cette fonction retourne juste un JSON
+#    return {"Hello": "World"}
+
 
 
 @app.get("/items/{id}")

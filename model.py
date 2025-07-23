@@ -9,7 +9,7 @@ def get_city(postcode):
                  f"FROM `communes-cp` "
                  f"WHERE Code_postal={postcode}")
 
-  res = cursor.fetchone()
+  res = cursor.fetchone()[0]
 
   print(res)
   return res
