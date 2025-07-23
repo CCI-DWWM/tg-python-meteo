@@ -5,9 +5,8 @@ def get_city(postcode):
   db = get_connection()
 
   cursor = db.cursor()
-  cursor.execute(f"SELECT Nom_de_la_commune "
-                 f"FROM `communes-cp` "
-                 f"WHERE Code_postal={postcode}")
+  query = "SELECT Nom_de_la_commune FROM `communes-cp` WHERE Code_postal = %s"
+  cursor.execute(query, (postcode,))
 
   res = cursor.fetchone()[0]
 
