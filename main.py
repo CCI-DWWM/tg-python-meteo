@@ -5,25 +5,29 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from model import get_city
+from weatherAPI import get_weather
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-@app.get("/", description="landing page")
+@app.get("/", description="weather landing page")
 def read_root(request: Request, postcode: str = None):
+
   if postcode:
     city = get_city(postcode)
+    weather = get_weather(postcode)
     return templates.TemplateResponse(
       request=request,
       name="cp.html",
-      context={"postcode": postcode, "city": city}
+      context={
+          "postcode": postcode,
+          "city": city,
+          "weather": weather
+          }
     )
   else:
-    return templates.TemplateResponse(
-      request=request,
-      name="cp.html",
-    )
+    return templates.TemplateResponse(request=request, name="cp.html")
 
 
 #--------------------

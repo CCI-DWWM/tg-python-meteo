@@ -24,9 +24,15 @@
     </form>
   </div>
   <div class="container p-3">
+
   {% if postcode %}
     <h2>Résultat pour le code postal {{ postcode }}</h2>
     <p><strong>Commune :</strong> {{ city }}</p>
+    {% if weather %}
+      <p><strong>Température :</strong> {{  weather.temperature }}°C</p>
+      <p><strong>Vent :</strong> {{ weather.windspeed }}km/h</p>
+      <p><strong>Direction du vent :</strong> {{ weather.winddirection }}°</p>
+    {% endif %}
   {% endif %}
   </div>
 </main>
