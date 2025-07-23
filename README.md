@@ -27,12 +27,12 @@ Application web FastAPI permettant à un utilisateur de connaître **le nom d'un
     ```bash
     pip install -r requirements.txt
     ```
-
+   
 4. Créer la base de données et importer les données :
-
-    Voir fichiers sources (csv et sql) dans `/data`
-
-
+    ```
+   #/datas/communes-cp.sql
+   ```
+   
 5. Créer un fichier `.env` à la racine du projet :
 
    Exemple de contenu :
@@ -50,9 +50,7 @@ fastapi dev main.py
 ```
 
 Ensuite, accéder à l'app dans un navigateur
-```cpp
-http://127.0.0.1:8000/
-```
+[http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ## Structure du projet
 - `main.py` : point d'entrée de l'application FastAPI
@@ -75,3 +73,8 @@ d’introduction à FastAPI**, mais ne sont pas utilisés dans l’application f
 - la deuxième partie de `main.py` (indiqué en commentaire)
 
 Ils peuvent être ignorés dans le cadre du projet principal.
+
+## Documentation (Swagger UI)
+
+Une documentation de l’API est générée automatiquement par FastAPI :
+ [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
